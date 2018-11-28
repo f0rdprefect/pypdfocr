@@ -1,0 +1,18 @@
+name: pypdfocr-matt
+version: git
+summary: add OCR layer to pdfs
+description: >
+   Pypdfocr is a python2 wrapper around tesseract OCR and ghostscript to create a text layer in your pdfs.
+confinement: devmode
+parts:
+   pypdfocr:
+      plugin: python
+      python-version: python2
+      source: .
+      source-type: git
+      stage-packages: [ghostscript, tesseract-ocr-all, imagemagick, poppler-utils]
+      organize:
+          /usr/bin/identify-im6: /usr/bin/identify
+apps:
+   test-pypdfocr-matt:
+      command: bin/pypdfocr
